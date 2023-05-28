@@ -32,6 +32,11 @@ public class VehicleResource {
 		Vehicle obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
+	@GetMapping(value = "/model/{model}")
+	public ResponseEntity<List<Vehicle>> findByModel(@PathVariable String model) {
+		List<Vehicle> list = service.findByModel(model);
+		return ResponseEntity.ok().body(list);
+	}
 	@PostMapping
 	public ResponseEntity<Vehicle> insertVehicle (@RequestBody Vehicle obj) {
 		obj = service.insert(obj);

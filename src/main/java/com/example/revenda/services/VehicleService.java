@@ -27,6 +27,10 @@ public class VehicleService {
 	public void deleteById (Long id) {
 		repository.deleteById(id);
 	}
+	public List<Vehicle> findByModel (String model) {
+		List<Vehicle> list = repository.findByModel(model);
+		return list;
+	}
 	
 
 }
