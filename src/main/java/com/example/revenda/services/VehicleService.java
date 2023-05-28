@@ -20,5 +20,9 @@ public class VehicleService {
 		Optional<Vehicle> obj = repository.findById(id);
 		return obj.get();
 	}
+	public Vehicle insert (Vehicle obj) {
+		return repository.save(obj);
+		
+	}
 
 }
