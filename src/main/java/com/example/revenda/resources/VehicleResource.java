@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,7 +38,12 @@ public class VehicleResource {
 		//Comando para que o retorno seja especificado para retornar o código 201 
 		//que o responsável por indicar que algo foi criado
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).body(obj);
+		return ResponseEntity.created(uri).body(obj);		
+	}
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> deletebyId(@PathVariable Long id){
+		service.deleteById(id);
+		return ResponseEntity.noContent().build();
 		
 	}
 
