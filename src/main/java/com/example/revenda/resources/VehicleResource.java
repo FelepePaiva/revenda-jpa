@@ -27,16 +27,26 @@ public class VehicleResource {
 		List<Vehicle> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-	@GetMapping(value = "/{id}")
-	public ResponseEntity<Vehicle> findById(@PathVariable Long id) {
-		Vehicle obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
-	}
+	//@GetMapping(value = "/{id}")
+	//public ResponseEntity<Vehicle> findById(@PathVariable Long id) {
+		//Vehicle obj = service.findById(id);
+		//return ResponseEntity.ok().body(obj);
+	//}
 	@GetMapping(value = "/model/{model}")
-	public ResponseEntity<List<Vehicle>> findByModel(@PathVariable String model) {
-		List<Vehicle> list = service.findByModel(model);
+	public ResponseEntity<Vehicle> findByModel(@PathVariable String model) {
+		Vehicle list = service.findByModel(model);
 		return ResponseEntity.ok().body(list);
 	}
+	@GetMapping(value = "/yearmodel/{yearModel}")
+	public ResponseEntity<List<Vehicle>> findByYearModel(@PathVariable Integer yearModel) {
+		List<Vehicle> list = service.findByYearModel(yearModel);
+		return ResponseEntity.ok().body(list);
+	}
+	@GetMapping(value = "/assembler/{assembler}")
+	public ResponseEntity<List<Vehicle>> findByAssembler(@PathVariable String assembler) {
+		List<Vehicle> list = service.findByAssembler(assembler);
+		return ResponseEntity.ok().body(list);
+	}		
 	@PostMapping
 	public ResponseEntity<Vehicle> insertVehicle (@RequestBody Vehicle obj) {
 		obj = service.insert(obj);

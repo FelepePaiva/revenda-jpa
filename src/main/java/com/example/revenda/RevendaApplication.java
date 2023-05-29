@@ -8,6 +8,11 @@ public class RevendaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RevendaApplication.class, args);
+		
+		
+		
+		
+		
 	}
 
 }

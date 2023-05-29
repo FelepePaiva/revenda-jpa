@@ -32,6 +32,7 @@ public class Vehicle implements Serializable{
 		this.yearModel = yearModel;
 		this.price = price;
 	}
+	
 
 	public Long getId() {
 		return id;
@@ -84,7 +85,7 @@ public class Vehicle implements Serializable{
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, price);
-	}
+	}	
 
 	@Override
 	public boolean equals(Object obj) {
