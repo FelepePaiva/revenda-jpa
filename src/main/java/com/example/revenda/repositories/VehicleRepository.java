@@ -11,11 +11,10 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long>{
 
 	Optional<Vehicle> findByModel(String model);
 
-	List<Vehicle> findByYearModel(Integer yearModel);
-
 	List<Vehicle> findByAssembler(String assembler);
 
-	
-	
+	List<Vehicle> findByYearModel(Integer yearModel);
+
+		List<Vehicle> findByPriceBetween(Double minPrice, Double maxPrice);	
 
 }

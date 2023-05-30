@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 @Entity
 @Table(name = "tb_vehicle")
-public class Vehicle implements Serializable{
+public class Vehicle implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -98,6 +98,7 @@ public class Vehicle implements Serializable{
 		Vehicle other = (Vehicle) obj;
 		return Objects.equals(id, other.id) && Objects.equals(price, other.price);
 	}
+
 	
 	
 	

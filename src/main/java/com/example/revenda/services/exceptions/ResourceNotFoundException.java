@@ -6,7 +6,10 @@ public class ResourceNotFoundException extends RuntimeException{
 	
 	public ResourceNotFoundException(String model) {
 		super("Resource not found. Model: " + model);
-		
+	}
+
+	public ResourceNotFoundException(Integer yearModel) {
+		super("Resource not found. Yearmodel: " + yearModel);
 	}
 	
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -38,15 +39,22 @@ public class VehicleResource {
 		return ResponseEntity.ok().body(list);
 	}
 	@GetMapping(value = "/yearmodel/{yearModel}")
-	public ResponseEntity<List<Vehicle>> findByYearModel(@PathVariable Integer yearModel) {
+	public ResponseEntity<List<Vehicle>> findByYearModel (@PathVariable Integer yearModel){
 		List<Vehicle> list = service.findByYearModel(yearModel);
 		return ResponseEntity.ok().body(list);
 	}
 	@GetMapping(value = "/assembler/{assembler}")
-	public ResponseEntity<List<Vehicle>> findByAssembler(@PathVariable String assembler) {
+	public ResponseEntity<List<Vehicle>> findByAssembler (@PathVariable String assembler){
 		List<Vehicle> list = service.findByAssembler(assembler);
 		return ResponseEntity.ok().body(list);
-	}		
+	}
+	@GetMapping(value = "/price/")
+	public ResponseEntity<List<Vehicle>> findByPriceRange (@RequestParam("minPrice") Double minPrice, 
+			@RequestParam("maxPrice") Double maxPrice){
+		List<Vehicle> list = service.findByPriceRange(minPrice, maxPrice);
+		return ResponseEntity.ok().body(list);
+	}
+	
 	@PostMapping
 	public ResponseEntity<Vehicle> insertVehicle (@RequestBody Vehicle obj) {
 		obj = service.insert(obj);

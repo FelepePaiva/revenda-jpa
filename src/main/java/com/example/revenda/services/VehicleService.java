@@ -30,13 +30,23 @@ public class VehicleService {
 	public Vehicle findByModel (String model) {
 		 return repository.findByModel(model).orElseThrow(() -> new ResourceNotFoundException(model));
 	}
-	public List<Vehicle> findByYearModel (Integer yearModel) {
-		List<Vehicle> list = repository.findByYearModel(yearModel);
-		return list;
+	public List<Vehicle> findByYearModel(Integer yearModel) {
+		 List<Vehicle> list = repository.findByYearModel(yearModel);		    
+		    if (list.isEmpty()) {
+		        throw new ResourceNotFoundException(yearModel);
+		    }		    
+		    return list;
 	}
-	public List<Vehicle> findByAssembler (String assembler) {
-		List<Vehicle> list = repository.findByAssembler(assembler);
-		return list;
+	public List<Vehicle> findByAssembler(String assembler) {
+		List<Vehicle> list = repository.findByAssembler(assembler);		    
+	    if (list.isEmpty()) {
+	        throw new ResourceNotFoundException(assembler);
+	    }		    
+	    return list;
 	}
-	
+	public List<Vehicle> findByPriceRange(Double minPrice, Double maxPrice) {
+	    return repository.findByPriceBetween(minPrice, maxPrice);
+	}
 }
+	
+
