@@ -25,8 +25,12 @@ public class VehicleService {
 		
 	}
 	public void deleteById (Long id) {
-		repository.deleteById(id);
-	}
+		if (!repository.existsById(id)) {
+	        throw new ResourceNotFoundException(id);
+	    }
+	    repository.deleteById(id);
+	}  
+	
 	public Vehicle findByModel (String model) {
 		 return repository.findByModel(model).orElseThrow(() -> new ResourceNotFoundException(model));
 	}
@@ -45,7 +49,14 @@ public class VehicleService {
 	    return list;
 	}
 	public List<Vehicle> findByPriceRange(Double minPrice, Double maxPrice) {
-	    return repository.findByPriceBetween(minPrice, maxPrice);
+		List<Vehicle> list = repository.findByPriceBetween(minPrice, maxPrice);
+		if (list.isEmpty()) {
+			throw new ResourceNotFoundException(minPrice, maxPrice);
+		}
+	    return list;
+	}
+	public Vehicle findById(Long id) {
+		return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 }
 	

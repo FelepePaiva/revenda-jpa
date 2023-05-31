@@ -11,6 +11,12 @@ public class ResourceNotFoundException extends RuntimeException{
 	public ResourceNotFoundException(Integer yearModel) {
 		super("Resource not found. Yearmodel: " + yearModel);
 	}
-	
 
+	public ResourceNotFoundException(Double minPrice, Double maxPrice) {
+		super("Resource not found. Price range: " + minPrice + " and " + maxPrice);
+	}
+
+	public ResourceNotFoundException(Long id) {
+		super("Resource not found. ID: " + id);
+	}
 }
