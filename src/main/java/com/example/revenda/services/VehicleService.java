@@ -11,7 +11,10 @@ import com.example.revenda.services.exceptions.ResourceNotFoundException;
 @Service
 public class VehicleService {
 	@Autowired
-	private VehicleRepository repository;
+	private final VehicleRepository repository;	
+	public VehicleService(VehicleRepository repository) {
+        this.repository = repository;
+    }
 	
 	public List<Vehicle> findAll(){
 		return repository.findAll();

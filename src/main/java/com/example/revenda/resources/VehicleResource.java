@@ -17,7 +17,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.revenda.entities.Vehicle;
 import com.example.revenda.services.VehicleService;
-
 @RestController
 @RequestMapping(value = "/vehicles")
 public class VehicleResource {
@@ -33,7 +32,8 @@ public class VehicleResource {
 		Vehicle obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
-	@GetMapping(value = "/model/{model}")
+	
+	@GetMapping(value = "/model/{model}")	
 	public ResponseEntity<Vehicle> findByModel(@PathVariable String model) {
 		Vehicle obj = service.findByModel(model);
 		return ResponseEntity.ok().body(obj);
