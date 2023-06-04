@@ -9,7 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 @Entity
-@Table(name = "tb_vehicle")
+@Table(name = "revenda")
 public class Vehicle implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -98,6 +98,13 @@ public class Vehicle implements Serializable {
 		Vehicle other = (Vehicle) obj;
 		return Objects.equals(id, other.id) && Objects.equals(price, other.price);
 	}
+
+	@Override
+	public String toString() {
+		return "Vehicle [id=" + id + ", model=" + model + ", assembler=" + assembler + ", color=" + color
+				+ ", yearModel=" + yearModel + ", price=" + price + "]";
+	}
+	
 
 	
 	

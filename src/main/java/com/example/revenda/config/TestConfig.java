@@ -1,4 +1,4 @@
-package com.example.revenda.config;
+/*package com.example.revenda.config;
 
 import java.util.Arrays;
 
@@ -28,3 +28,4 @@ public class TestConfig implements CommandLineRunner {
 	}
 
 }
+*/
