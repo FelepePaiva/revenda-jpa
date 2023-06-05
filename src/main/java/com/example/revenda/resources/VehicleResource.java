@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,5 +29,10 @@ public class VehicleResource {
 		service.deleteById(id);
 		return ResponseEntity.ok("Veículo excluído com sucesso!");
 	}
-
+	@GetMapping(value = "/model/{model}")
+	@Transactional
+	public ResponseEntity<Vehicle> findByModel(@PathVariable String model) {
+		Vehicle obj = service.findByModel(model);
+		return ResponseEntity.ok().body(obj);
+	}
 }

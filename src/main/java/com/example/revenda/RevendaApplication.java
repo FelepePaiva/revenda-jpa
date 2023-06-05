@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.example.revenda.entities.Vehicle;
 import com.example.revenda.services.VehicleService;
+import com.example.revenda.services.exceptions.ResourceNotFoundException;
 @EnableWebMvc
 @SpringBootApplication
 @ComponentScan(basePackages = "com.example.revenda")
@@ -61,6 +62,17 @@ public class RevendaApplication {
 				service.deleteById(id);
 				System.out.println("O veículo foi deletado com sucesso!");
 				break;
+			case 3:
+				System.out.println("Digite o modelo do veículo para buscar: ");
+				model = sc.nextLine();
+				try {
+				service.findByModel(model);
+				System.out.println(service.findByModel(model));
+				}
+				catch (ResourceNotFoundException e) {
+					System.out.println((e.getMessage()));
+				}
+				
 			default:
 				System.out.println("OPÇAO DE MENU INVALIDA");
 				} 

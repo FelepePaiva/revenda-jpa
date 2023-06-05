@@ -24,6 +24,10 @@ public class VehicleService {
 	    }
 	    repository.deleteById(id);
 	}
+	public Vehicle findByModel(String model) {
+		return repository.findByModel(model).orElseThrow(() -> new ResourceNotFoundException(model));
+	}
+	
 
 
 }
