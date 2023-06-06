@@ -1,5 +1,7 @@
 package com.example.revenda.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +26,29 @@ public class VehicleService {
 	    }
 	    repository.deleteById(id);
 	}
-	public Vehicle findByModel(String model) {
-		return repository.findByModel(model).orElseThrow(() -> new ResourceNotFoundException(model));
+	public List<Vehicle> findByModel(String model) {
+		List<Vehicle> list = repository.findByModel(model);
+		if (list.isEmpty()) {
+			throw new ResourceNotFoundException(model);
+		}
+		return list;
+	}
+	public List<Vehicle> findByAssembler(String assembler) {
+		List<Vehicle> list = repository.findByAssembler(assembler);		    
+	    if (list.isEmpty()) {
+	        throw new ResourceNotFoundException(assembler);
+	    }		    
+	    return list;
+	}
+	public Vehicle findByYearModel(Integer yearModel) {
+		return repository.findByYearModel(yearModel).orElseThrow(() -> new ResourceNotFoundException(yearModel));
+	}
+	public List<Vehicle> findByPriceRange(Double minPrice, Double maxPrice) {
+		List<Vehicle> list = repository.findByPriceBetween(minPrice, maxPrice);
+		if (list.isEmpty()) {
+			throw new ResourceNotFoundException(minPrice, maxPrice);
+		}
+	    return list;
 	}
 	
 

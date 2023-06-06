@@ -72,7 +72,46 @@ public class RevendaApplication {
 				catch (ResourceNotFoundException e) {
 					System.out.println((e.getMessage()));
 				}
-				
+				break;
+			case 4:
+				System.out.println("Digite a montadora que deseja buscar: ");
+				assembler = sc.nextLine();
+				try {
+				service.findByAssembler(assembler);
+				System.out.println(service.findByAssembler(assembler));
+				}
+				catch (ResourceNotFoundException e) {
+					System.out.println((e.getMessage()));
+				}
+				break;
+			case 5:
+				System.out.println("Digite o ANO/MODELO que deseja buscar: ");
+				yearModel = sc.nextInt();
+				try {
+				service.findByYearModel(yearModel);
+				System.out.println(service.findByYearModel(yearModel));
+				}
+				catch (ResourceNotFoundException e) {
+					System.out.println((e.getMessage()));
+				}
+				break;
+			case 6:
+				System.out.println("Digite a faixa de preço (minímo e máximo) que deseja buscar: ");
+				System.out.println("Digite o valor mínimo: ");
+				double minPrice = sc.nextDouble();
+				System.out.println("Digite o valor máximo: ");
+				double maxPrice = sc.nextDouble();
+							
+				try {
+				service.findByPriceRange(minPrice, maxPrice);
+				System.out.println(service.findByPriceRange(minPrice, maxPrice));
+				}
+				catch (ResourceNotFoundException e) {
+					System.out.println((e.getMessage()));
+				}	
+			case 7:
+				System.out.println("Saindo...");
+				break;
 			default:
 				System.out.println("OPÇAO DE MENU INVALIDA");
 				} 
@@ -81,13 +120,13 @@ public class RevendaApplication {
 		sc.close();
 	}
 	static void exibirMenu() {
-		System.out.println("-------- LIVRO LIVRARIA --------");
+		System.out.println("-------- REVENDA DE VEÍCULOS --------");
 		System.out.println("1 - CADASTRAR VEÍCULO");
 		System.out.println("2 - REMOVER VEÍCULO");
-		System.out.println("3 - EXCLUIR LIVRO");
-		System.out.println("4 - PESQUISAR GÊNERO");
-		System.out.println("5 - PESQUISAR POR FAIXA DE PREÇO");
-		System.out.println("6 - CALCULAR O VALOR TOTAL DO ACERVO");
+		System.out.println("3 - BUSCAR POR MODELO");
+		System.out.println("4 - BUSCAR POR MONTADORA");
+		System.out.println("5 - BUSCAR POR ANO/MODELO");
+		System.out.println("6 - BUSCA POR FAIXA DE PREÇO");
 		System.out.println("7 - SAIR");
 		System.out.println("--- ESCOLHA UMA OPÇÃO ---");
 	}
