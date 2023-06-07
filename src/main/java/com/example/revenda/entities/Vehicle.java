@@ -101,13 +101,11 @@ public class Vehicle implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Vehicle [id=" + id + ", model=" + model + ", assembler=" + assembler + ", color=" + color
-				+ ", yearModel=" + yearModel + ", price=" + price + "]";
+		return "Dados do veículo: " + "\n"
+	+ "Modelo: " + model + "\n"
+	+ "Montadora: " + assembler + "\n"
+	+ "Cor: " + color + "\n"		
+	+ "Ano do modelo: " + yearModel + "\n"
+	+ "Preço: R$ " + String.format("%.2f", price);
 	}
-	
-
-	
-	
-	
-
 }
