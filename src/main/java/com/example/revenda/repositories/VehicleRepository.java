@@ -1,7 +1,6 @@
 package com.example.revenda.repositories;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -12,12 +11,8 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Long>{
 
 	List<Vehicle> findByAssembler(String assembler);
 
-	Optional<Vehicle> findByYearModel(Integer yearModel);
+	List<Vehicle> findByYearModel(Integer yearModel);
 
 	List<Vehicle> findByPriceBetween(Double minPrice, Double maxPrice);
-
-	
-
-
 	}
 

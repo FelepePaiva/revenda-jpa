@@ -46,8 +46,8 @@ public class VehicleResource {
 	}
 	@GetMapping(value = "/yearModel/{yearModel}")
 	@Transactional
-	public ResponseEntity<Vehicle> findByYearModel(@PathVariable Integer yearModel) {
-		Vehicle obj = service.findByYearModel(yearModel);
+	public ResponseEntity<List<Vehicle>> findByYearModel(@PathVariable Integer yearModel) {
+		List<Vehicle> obj = service.findByYearModel(yearModel);
 		return ResponseEntity.ok().body(obj);
 	}
 	@GetMapping(value = "/price/")

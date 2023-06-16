@@ -10,7 +10,7 @@ import com.example.revenda.repositories.VehicleRepository;
 import com.example.revenda.services.exceptions.ResourceNotFoundException;
 @Service
 public class VehicleService {
-	private final VehicleRepository repository;
+	private VehicleRepository repository;
 
     @Autowired
     public VehicleService(VehicleRepository repository) {
@@ -40,8 +40,12 @@ public class VehicleService {
 	    }		    
 	    return list;
 	}
-	public Vehicle findByYearModel(Integer yearModel) {
-		return repository.findByYearModel(yearModel).orElseThrow(() -> new ResourceNotFoundException(yearModel));
+	public List<Vehicle> findByYearModel(Integer yearModel) {
+		List<Vehicle> list = repository.findByYearModel(yearModel);
+		if (list.isEmpty()) {
+			throw new ResourceNotFoundException(yearModel);
+		}
+		return list;
 	}
 	public List<Vehicle> findByPriceRange(Double minPrice, Double maxPrice) {
 		List<Vehicle> list = repository.findByPriceBetween(minPrice, maxPrice);
