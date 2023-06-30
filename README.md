@@ -10,8 +10,8 @@ Aplicação para controle de estoque de uma revenda de veículos
 - Exclusão de veículos: Permite excluir um veículo do banco de dados.
 # TECNOLOGIAS EMPREGADAS
 Java
-Spring Boot
-JPA (Java Persistence API)
+Spring Boot,
+JPA (Java Persistence API),
 MySQL
 # CONTATO
 - EMAIL: felipe.geo.uece@gmail.com
